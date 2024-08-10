@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        // 첫번째 줄에 100이하의 세 자연수가 입력된다.
+        // 첫 번째 줄에 가장 작은 수를 출력한다.
+        let answer;
+        if (a > b) answer = b;
+        else answer = a;
+        if (answer > c) answer = c;
+        return answer;
+      }
+
+      console.log(solution(10, 1, 0));
+    </script>
+  </body>
+</html>
