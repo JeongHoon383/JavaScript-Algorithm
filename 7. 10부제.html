@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(day, arr) {
+        // 배열 순회
+        // 배열 안에 조건문으로 값 추출
+        // 배열안에 조건에 맞는 값을 갯수로 출력해야 한다면?
+        // 임의의 변수 생성 0 값을 담고 조건에 맞으면 값이++되게 로직 구현할 것
+        let answer = 0;
+        for (const x of arr) {
+          if (x % 10 === day) answer++;
+        }
+        return answer;
+      }
+
+      arr = [25, 23, 11, 47, 52, 91, 33];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>

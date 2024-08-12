@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 9개의 값을 가진 배열 입력
+      // 7개를 출력 but, 7개의 값이 100
+      // 일단 9개를 다 더해줘야함
+      // 9개중 2개를 빼줘야 하는데 2개를 뺏을때 합이 100이 나와야됨
+      // 2개의 짝의 경우의 수를 구해야됨
+      // 나온 수를 배열에서 빼주면 됨.
+      function solution(arr) {
+        let answer = arr;
+        let sum = answer.reduce((a, b) => a + b, 0);
+        for (let i = 0; i < answer.length - 1; i++) {
+          for (let j = i + 1; j < answer.length; j++) {
+            if (sum - (answer[i] + answer[j]) === 100) {
+              answer.splice(j, 1);
+              answer.splice(i, 1);
+            }
+          }
+        }
+        return answer;
+      }
+
+      let arr = [22, 7, 21, 19, 10, 15, 25, 8, 13];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

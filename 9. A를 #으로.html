@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // A를 #으로 바꿔서 출력
+      // s 문자열 순회
+      // 조건문으로 A를 N으로 바꾸고 나머지는 x의 값에서 출력
+      function solution(s) {
+        let answer = "";
+        for (const x of s) {
+          if (x === "A") answer += "#";
+          else answer += x;
+        }
+        return answer;
+      }
+
+      let str = "BANANA";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
