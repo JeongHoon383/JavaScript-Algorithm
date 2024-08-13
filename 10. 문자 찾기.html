@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 해당 문자열에 "R" 이 몇개 있는지
+      // 문자열 순회
+      function solution(s, t) {
+        let answer = 0;
+        for (const x of s) {
+          if (x === t) {
+            answer++;
+          }
+        }
+        return answer;
+      }
+
+      let str = "COMPUTERPROGRAMMING";
+      console.log(solution(str, "R"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 대문자 개수 출력
+      // 만약 x가 대문자라면?
+      // 대문자 나타내는 함수 toUpperCase()
+      // 비교를 어떻게 하지?
+      function solution(s) {
+        let answer = 0;
+        for (let x of s) {
+          if (x === x.toUpperCase()) answer++;
+        }
+        return answer;
+      }
+
+      let str = "KoreaTimeGood";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
