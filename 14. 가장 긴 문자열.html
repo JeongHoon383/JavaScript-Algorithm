@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        // 가장 긴 문자열을 출력
+        // 배열 안에 문자열 순회
+        // 문자열 개수 탐색
+        // 제일 긴 문자열 return
+        let answer = "",
+          max = Number.MIN_SAFE_INTEGER;
+        for (let x of s) {
+          if (x.length > max) {
+            max = x.length;
+            answer = x;
+          }
+        }
+        return answer;
+      }
+      let str = ["teacher", "time", "student", "beautiful", "good"];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
