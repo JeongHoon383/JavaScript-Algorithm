@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 중복된 문자열 제거
+      // 순회해서 담아주기
+      // 담았을 때 똑같은게 담겨 있으면 추가하지 않게
+      // 담겨져 있는 것 중 새로 담기는 문자열이 없을 때 담아주기
+      function solution(s) {
+        let answer = "";
+        for (let i = 0; i < s.length; i++) {
+          if (s.indexOf(s[i]) === i) answer += s[i];
+        }
+        // for (let x of s) {
+        //   if (!answer.includes(x)) {
+        //     answer += x;
+        //   }
+        // }
+        return answer;
+      }
+      console.log(solution("ksekkest"));
+    </script>
+  </body>
+</html>
