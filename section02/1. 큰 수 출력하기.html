@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        // 큰 수 출력하기
+        // 자신의 바로 앞 수보다 큰 수만 한 줄로 출력
+        // 배열이 값이 담겨야됨 - 값이 더해지는 건 알겠는데, 배열에 담아주는걸 모르겠음.
+        // 배열 안의 값 탐색
+        // i와 i+1 비교
+
+        let answer = [];
+        answer.push[arr[0]];
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] > arr[i - 1]) answer.push(arr[i]);
+        }
+        return answer;
+      }
+
+      let arr = [7, 3, 9, 5, 6, 12];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
