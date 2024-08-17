@@ -6,7 +6,16 @@
   <body>
     <script>
       function solution(a, b) {
+        // 1 : 가위, 2 : 바위, 3 : 보
+        // a가 이기면 A출력, b가 이기면 B 출력, 비길경우 D 출력
+        // 가위바위보 로직 먼저 짤 것
+        // 1 < 2, 2 < 3, 3 < 1,
+        // 1이랑 3이 붙었을때 1이 이기게 해야됨
+        // 숫자로 비교하면 true false로 나와서
         let answer = "";
+        for (let i = 0; i < a.length; i++) {
+          if (1 > 2) if (a[i] > b[i]) answer.push("A");
+        }
 
         return answer;
       }
