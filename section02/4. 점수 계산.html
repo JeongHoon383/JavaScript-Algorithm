@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        // 답이 맞는 경우는 1 - o
+        // 답이 틀린 경우는 0 - o
+        // 연속으로 맞추면 맞춘 만큼 점수가 오름 ex) 2개 연속 2점, 3개 연속 3점
+        // 총 점수를 구하시오
+        let answer = 0,
+          cnt = 0;
+        // 연속으로 맞췄을 때
+        // 1이 나오고 그다음에도 1이 들어올때, 추가로 1이 들어온 만큼 점수도 같이 올라가야됨
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === 1) cnt++;
+          else cnt = 0;
+          answer += cnt;
+        }
+
+        return answer;
+      }
+
+      let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
