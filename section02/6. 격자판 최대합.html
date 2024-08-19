@@ -5,15 +5,33 @@
   </head>
   <body>
     <script>
-      // 5*5 각 행, 열, 두 대각선의 합 중 가장 큰 합을 출력
-      // 각 행, 열, 두 대각선의 합을 구하기
+      // 격자합 최대값 구하기
+
       function solution(arr) {
-        answer = 0;
-        for (let i = 0; i < arr.length; i++) {
-          for (let j = 0; j < arr.length; j++) {
-            // 합 구하기
+        let answer = Number.MIN_SAFE_INTEGER;
+        let n = arr.length;
+        let sum1 = (sum2 = 0);
+        for (let i = 0; i < n; i++) {
+          sum1 = sum2 = 0;
+          for (let j = 0; j < n; j++) {
+            // 행의 값
+            sum1 += arr[i][j];
+            sum2 += arr[j][i];
           }
+          answer = Math.max(answer, sum1, sum2);
+          // 행, 열 중 최대값 answer에 저장
         }
+        // 대각선 최대값 구하기
+        sum1 = sum2 = 0;
+        for (let i = 0; i < n; i++) {
+          // 좌측 대각선의 합
+          sum1 += arr[i][i];
+          // 우측 대각선의 합
+          sum2 += arr[i][n - i - 1];
+        }
+        answer = Math.max(answer, sum1, sum2);
+
+        return answer;
       }
 
       let arr = [
