@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 문자열 s와 t가 떨어진 최소거리를 구하라
+      // 왼쪽에서 탐색 후 answer에 값 넣어주기 - o
+      // 오른쪽에서 탐색 후 answer에 값과 p 값을 비교해서 작은 값을
+      // 기존 배열의 값과 바꿔주기
+      function solution(s, t) {
+        let answer = [];
+        let p = 100;
+        // 왼쪽에서 순회
+        for (let x of s) {
+          if (x !== "e") {
+            p++;
+            answer.push(p);
+          } else {
+            p = 0;
+            answer.push(p);
+          }
+        }
+        console.log(answer);
+        // 오른쪽에서 순회
+        p = 1000;
+        for (let i = s.length - 1; i >= 0; i--) {
+          if (s[i] === "e") p = 0;
+          else {
+            p++;
+            answer[i] = Math.min(answer[i], p);
+          }
+        }
+        return answer;
+      }
+
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+      // 10121012210
+    </script>
+  </body>
+</html>
