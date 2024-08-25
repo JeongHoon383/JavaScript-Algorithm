@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function isPrime(num) {
+        // 배열안에 숫자 중 소수만 출력하기
+        // 소수 : 1보다 큰 자연수 중 약수가 1과 자기 자신만을 가진 수
+
+        if (num === 1) return false;
+        for (let i = 2; i < num; i++) {
+          if (num % i === 0) return false;
+        }
+        return num;
+      }
+      // null 값 말고 조건에 만족하는 숫자만 return 되게
+      function solution(arr) {
+        let answer = [];
+        // 배열 순회
+        for (let x of arr) {
+          // x 값 뒤집기
+          // 어떻게 뒤집을까?(메서드를 사용하지 않고)
+          // 일단 자리수의 값을 출력, 한자리 값 출력 후 뒤에꺼 먼저 push
+          let sum = "";
+          tmp = x;
+          //
+          while (tmp) {
+            sum += String(tmp % 10); // 일의자리부터 자리수 계산
+            tmp = Math.floor(tmp / 10); // 다음 자리수 계산을 위해 값을 나눔
+          }
+          sum = Number(sum);
+
+          // while 문 안쓰고 출력
+          // let res = Number(x.toString().split('').reverse().join(''))
+          // if(isPrime(res)) answer.push(res)
+
+          // 배열안에 문자열을 숫자열로 바꿔주기
+          if (isPrime(sum) !== false) {
+            answer.push(isPrime(sum));
+          }
+        }
+        return answer;
+      }
+
+      let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100, 97];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
