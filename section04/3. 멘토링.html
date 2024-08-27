@@ -11,26 +11,38 @@
         // 2. i : 멘토, j : 멘티, i가 j보다 항상 앞서야함, 경우의 수 안에서 또 2중 for문
         // 3. i(멘토) 의 값이 몇번째 등수(s)인지 확인
 
-        let answer = 0;
-        m = test.length;
-        n = test[0].length;
-        for (let i = 1; i < n + 1; i++) {
-          for (let j = 1; j < n + 1; j++) {
+        let answer = 0,
+          tmp = [];
+        m = test.length; // 3
+        n = test[0].length; // 4
+        for (let i = 1; i <= n; i++) {
+          for (let j = 1; j <= n; j++) {
+            // 짝이 나올 수 있는 모든 경우의 수 출력
+            let cnt = 0;
+            // cnt가 m 일때 answer의 값이 늘어남, 왜? m 값이 멘토의 등수가 멘티를 다 재꼈을때임
             for (let k = 0; k < m; k++) {
+              let pi = (pj = 0);
               for (let s = 0; s < n; s++) {
-                if (test[k][s] === i) {
-                  pi = s;
-                }
-                if (test[k][s] === j) {
-                  pj = s;
-                }
-                if (pi < pj) cnt++;
+                // 배열 내 숫자 탐색
+                if (test[k][s] === i) pi = s;
+                if (test[k][s] === j) pj = s;
+                // 멘토, 멘티의 등수가 정해짐
               }
+              if (pi < pj) cnt++;
+              // 멘토의 등수가 멘티의 등수보다 높을때(값이 낮아야 등수가 높음) cnt++
+              // cnt는 각 행에서 둘을 비교했을 때 멘토가 앞서는 상황에 cnt가 증가됨
             }
+            if (cnt === m) {
+              tmp.push([i, j]);
+              answer++;
+            }
+            // cnt, 즉 멘토가 멘티의 등수를 모두 앞섰을 때 그에 맞는 짝이 생기는 것임
           }
         }
+        console.log(tmp);
         return answer;
       }
+      // cnt 의 빈값 선언 할 위치를 찾아야됨
 
       let arr = [
         [3, 4, 1, 2],

@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, product) {
+        let answer = 0;
+        let n = product.length;
+        // 합이 작은 순서대로 나열하기
+        // 할인을 어떤 배열에 해줘야 할지?
+        // 할인을 받는 경우를 모두 구해주기
+
+        product.sort((a, b) => a[0] + a[1] - (b[0] + b[1]));
+        for (let i = 0; i < n; i++) {
+          let money = m - (product[i][0] / 2 + product[i][1]);
+          // 전체 금액에서 할인이 된 금액을 빼주기
+          let cnt = 1;
+          for (let j = 0; j < n; j++) {
+            if (j !== i && product[j][0] + product[j][1] > money) break;
+            if (j !== i && product[j][0] + product[j][1] <= money) {
+              money -= product[j][0] + product[j][1];
+              cnt++;
+            }
+          }
+          answer = Math.max(answer, cnt);
+        }
+
+        return answer;
+      }
+
+      // product.sort((a, b) => a[0] + a[1] - (b[0] + b[1]));
+      // for (let i = 0; i < n; i++) {
+      //   let money = m - (product[i][0] / 2 + product[i][1]);
+      //   // 남은 돈 = 전체돈 - i요소에 상품에 쿠폰을 적용한 값과 배송비를 합산
+      //   let cnt = 1;
+      //   for (let j = 0; j < n; j++) {
+      //     // 남은 돈으로 나머지 구입
+      //     // j !== i : i 와 같으면 안됨 why? i는 할인된 상품
+      //     if (j !== i && product[j][0] + product[j][1] > money) break;
+      //     if (j !== i && product[j][0] + product[j][1] <= money) {
+      //       money -= product[j][0] + product[j][1];
+      //       cnt++;
+      //     }
+      //   }
+      //   answer = Math.max(answer, cnt)
+      // max가 왜 필요? 그냥 answer = cnt 하면 안됨?
+      // max 메서드 없이 cnt 값을 저장하게 되면 i의 값이 달라졌을 때 cnt 값이 달라질 수 있음
+      // 따라서 cnt 값 중에서 최대값을 출력해줘야 되기 때문에 max 메서드를 사용
+
+      let arr = [
+        [6, 6],
+        [2, 2],
+        [4, 3],
+        [4, 5],
+        [10, 3],
+      ];
+      console.log(solution(28, arr));
+    </script>
+  </body>
+</html>
