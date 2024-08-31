@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function compareMaps(map1, map2) {
+        // map1 = sH, map2 = tH
+        if (map1.size !== map2.size) return false;
+        // 요소에 몇개 들어있는지, 개수가 다르면 false
+        for (let [key, val] of map1) {
+          if (!map2.has(key) || map2.get(key) !== val) return false;
+          // map1 에 key, val을 추출해서 map2의 key 값과 val 값이 맞지 않으면 false 반환
+        }
+
+        return true;
+      }
+      function solution(s, t) {
+        let answer = 0;
+        let tH = new Map();
+        let sH = new Map();
+        // t의 요소 카운트 구하기, tH에 할당
+        for (let x of t) {
+          if (tH.has(x)) tH.set(x, tH.get(x) + 1);
+          else tH.set(x, 1);
+        }
+        let len = t.length - 1;
+        // 왜 -1 일까?
+        for (let i = 0; i < len; i++) {
+          if (sH.has(s[i])) sH.set(s[i], sH.get(s[i]) + 1);
+          else sH.set(s[i], 1);
+        }
+        // s의 0, 1 번째 요소 카운트, sH에 할당
+        console.log(sH); // tH와 똑같아야됨
+        console.log(tH); // 기준
+        let lt = 0;
+        for (let rt = len; rt < s.length; rt++) {
+          if (sH.has(s[rt])) sH.set(s[rt], sH.get(s[rt]) + 1);
+          else sH.set(s[rt], 1);
+          // 추가, sH에 c를 추가
+          if (compareMaps(sH, tH)) answer++;
+          // 비교, true일 경우 answer++
+          sH.set(s[lt], sH.get(s[lt]) - 1);
+          // 빼기, 추가 전에 맨 처음 것을 빼야됨, value 값을 뺌
+          if (sH.get(s[lt]) === 0) sH.delete(s[lt]);
+          // sH값이 0이면 요소에서 제거
+          lt++;
+          // 다음으로 이동
+        }
+
+        return answer;
+      }
+
+      let a = "bacaAacba";
+      let b = "abc";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>

@@ -8,22 +8,24 @@
       function solution(s) {
         let answer;
         let sH = new Map();
-        // has(요소) : 요소가 있는지 확인
-        // set(key, value) : 요소 추가
-        // get(key) : 요소 접근
+        // has() -> 요소가 있는지 확인
+        // set(key, value) -> key, value 값 추가
+        // get() -> 요소 조회
+        // get, has 구분해서 이해하기
+        // 문자열 중복제거 및 개수만큼 번호로 출력
         for (let x of s) {
           if (sH.has(x)) sH.set(x, sH.get(x) + 1);
           else sH.set(x, 1);
         }
-        console.log(sH); // 요소 확인
+        // 최대값 출력
         let max = Number.MIN_SAFE_INTEGER;
         for (let [key, val] of sH) {
-          // key : 문자열, val : 문자열 개수
           if (val > max) {
             max = val;
             answer = key;
           }
         }
+
         return answer;
       }
 
