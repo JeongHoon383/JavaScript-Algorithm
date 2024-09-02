@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        // 일단 넣고
+        //
+        let answer = "YES";
+        stack = [];
+        for (let x of s) {
+          if (x === "(") stack.push(x);
+          else {
+            if (stack.length === 0) return "NO";
+            stack.pop();
+            // pop 을 왜 하지? - 올바른 부호면 다 없어짐, ( 게 있는게 확인되면 제거
+            // 올바르지 않으면 stack에 문자열이 남음
+          }
+        }
+        // if (stack.length > 0) return "NO";
+        return answer;
+      }
+
+      let a = "()())";
+      console.log(solution(a));
+    </script>
+  </body>
+</html>

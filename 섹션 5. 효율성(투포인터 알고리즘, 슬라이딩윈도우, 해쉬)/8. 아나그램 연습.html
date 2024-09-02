@@ -5,14 +5,18 @@
   </head>
   <body>
     <script>
+      // a, b 아나그램이 되는 부분 문자열 개수 구하기
+      // a에 b가 갖고 있는 요소 찾기
+      // 투포인터 알고리즘을 통해 요소 추가 후 첫번째 요소 제거
       function compareMaps(map1, map2) {
-        // map1 = sH(변동값), map2 = tH(기준값)
-        // 두 값을 비교했을 때 false가 나오는 경우를 구해야됨
+        // map1 = sH(변동값), map2 = tH(고정값)
+        // 짝이 안맞는 경우 탐색 false 출력
         if (map1.size !== map2.size) return false;
         for (let [key, val] of map1) {
           if (!map2.has(key) || map2.get(key) !== val) return false;
         }
         return true;
+        // key, val 값 비교
       }
 
       function solution(s, t) {
@@ -24,25 +28,25 @@
           if (tH.has(x)) tH.set(x, tH.get(x) + 1);
           else tH.set(x, 1);
         }
-        // tH 요소 카운팅
         let len = t.length - 1;
         for (let i = 0; i < len; i++) {
           if (sH.has(s[i])) sH.set(s[i], sH.get(s[i]) + 1);
-          else sH.set(s[i], 1);
+          sH.set(s[i], 1);
         }
+        // sH 추가, 비교, 감소
         let lt = 0;
         for (let rt = len; rt < s.length; rt++) {
+          // 추가
           if (sH.has(s[rt])) sH.set(s[rt], sH.get(s[rt]) + 1);
           else sH.set(s[rt], 1);
-          // 추가
-          if (compareMaps(sH, tH)) answer++;
           // 비교
+          if (compareMaps(sH, tH)) answer++;
+          // 감소
           sH.set(s[lt], sH.get(s[lt]) - 1);
           if (sH.get(s[lt]) === 0) sH.delete(s[lt]);
           lt++;
-          // key, value 값 뺴줘야됨. 조건문 필요없음 왜? 무조건 첫번째꺼는 빼야되니까
+          // key, value 값 제거
         }
-
         return answer;
       }
 
